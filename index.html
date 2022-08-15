@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="Author" content="Umair Ahmed">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://kit.fontawesome.com/5664d14446.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+        
+
+        <script src="calculator.js"></script>
+        <script src="jquerry.js"></script>
+
+    </head>
+    <body">
+        <div class="container">
+            <div>
+                <div class="mainblock">
+                    <div class="display" >
+                        <div class="history "  >
+                            <i  class="fa-solid fa-clock-rotate-left leftclock" ></i>
+                            <input id="textexp" class="ans" type="text" placeholder="Ans=0" disabled>  
+                            <div class="historybox">
+                                <h1>History</h1>
+                                <div class="historyblock" >
+
+                                </div>
+                            </div>                  
+                        </div>
+                        <input id="textinput"  class="input" type="text" placeholder="0" value="">
+                    </div>
+                </div>
+                <div class="keybord">
+                    <input class="exp" type="button" value="sin">
+                    <input class="exp" type="button" value="cos">
+                    <input class="exp" type="button" value="(">
+                    <input class="exp" type="button" value=")">
+                    <input class="ac" type="button" value="AC">
+                    <input class="ce" type="button" value="CE">
+                </div>
+                <div class="keybord">
+                    <input class="exp" type="button" value="tan">
+                    <input class="exp" type="button" value="e">
+                    <input class="inp" type="button" value="7">
+                    <input class="inp" type="button" value="8">
+                    <input class="inp" type="button" value="9">
+                    <input class="exp" type="button" value="&divide">
+                </div>
+                <div class="keybord">
+                    <input class="exp" type="button" value="^">
+                    <input class="exp" type="button" value="&#960">
+                    <input class="inp" type="button" value="4">
+                    <input class="inp" type="button" value="5">
+                    <input class="inp" type="button" value="6">
+                    <input class="exp" type="button" value="&#215">
+                </div>
+                <div class="keybord">
+                    <input class="exp" type="button" value="&#8730">
+                    <input class="exp" type="button" value="!">
+                    <input class="inp" type="button" value="1">
+                    <input class="inp" type="button" value="2">
+                    <input class="inp" type="button" value="3">
+                    <input class="exp" type="button" value="-">
+                </div>
+                <div class="keybord">
+                    <input class="exp" type="button" value="%">
+                    <input class="exp" type="button" value="Ans">
+                    <input class="inp" type="button" value="0">
+                    <input class="inp" type="button" value=".">
+                    <input class="equal" type="button" value="=">
+                    <input class="exp" type="button" value="+">
+                </div>
+            </div>
+            
+        </div>
+    </body>
+    <script>
+        $(document).ready(function(){
+        $(".inp, .exp").click(function(){
+            reply_click(this.value);
+            $(".historybox").hide()
+        });
+        $(".ac").click(function(){
+            clear_input();
+            $(".historybox").hide()
+
+        });
+        $(".ce").click(function(){
+            remove_input();
+            $(".historybox").hide()
+
+        });
+        $(".equal").click(function(){
+            solve_expression();
+            $(".historybox").hide()
+
+        });
+        $(".leftclock").click(function(){
+            $(".historybox").animate({
+            height: 'toggle'
+            });
+        });
+        $(".keybord, .input, .ans").click(function(){
+            $(".historybox").hide()
+            });
+        });
+    </script>
+</html>

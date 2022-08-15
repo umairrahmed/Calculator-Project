@@ -1,0 +1,138 @@
+.mainblock{
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 50px;
+
+}
+
+.ans{
+    border: none;
+    background-color: white;
+    width: 100%;
+    margin-left: 20px;
+    text-align: right;
+    font-size: medium;
+}
+.historybox{
+    position: absolute;
+    background-color: #f1f3f4;
+    top: 30px;
+    left: -12px;
+    width: 300px;
+    height: 350px;
+    border-radius: 7px;
+    display: none;
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+.historyblock{
+    height: 280px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+h1{
+    text-align: center;
+}
+.history{
+    display: flex;
+    position: relative;
+}
+.leftclock{
+    margin-top: 5px;
+    font-size: large;
+}
+.input{
+    width: 100%;
+    border: none;
+    background-color: white;
+    text-align: right;
+    margin-top: 5px;
+    font-size: 30px;
+
+}
+input:focus{
+    outline: none;
+}
+.display{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.keybord{
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+.inp{
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    height: 40px;
+    flex-basis: 14%;
+    background-color: #f1f3f4;
+    font-size: 20px;
+}
+.exp{
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    height: 40px;
+    flex-basis: 14%;
+    background-color: #dadce0;
+    font-size: 20px;
+}
+.ac{
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    height: 40px;
+    flex-basis: 14%;
+    background-color: #dadce0;
+    font-size: 20px;
+}
+.ce{
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    height: 40px;
+    flex-basis: 14%;
+    background-color: #dadce0;
+    font-size: 20px;
+}
+.equal{
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    height: 40px;
+    flex-basis: 14%;
+    background-color: #4285f4;
+    font-size: 20px;
+}
+@media(min-width:768px) {
+    .mainblock{
+        margin-left: 20%;
+        margin-right: 20%;
+        margin-top: 100px;
+    }
+    .keybord{
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+}
+.historyicon{
+    margin-left: 10px;
+    font-size: 15px;
+}
+.historytext{
+    margin-left: 10px;
+    position: absolute;
+}
+.his{
+    position: relative;
+    margin-top: 20px;
+    height: 10px;
+}
