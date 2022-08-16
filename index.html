@@ -84,6 +84,16 @@
     </body>
     <script>
         $(document).ready(function(){
+            var input=document.getElementById("textinput")
+            input.focus()
+        $(document).keydown(function(e){
+            if(e.which==13)
+            {
+                solve_expression();
+                $(".historybox").hide()
+            }
+
+        })
         $(".inp, .exp").click(function(){
             reply_click(this.value);
             $(".historybox").hide()

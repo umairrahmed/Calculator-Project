@@ -2,6 +2,8 @@ let operator=[]
 let operation=[]
 let ans=0;
 let history=[]
+var input=document.getElementById("textinput")
+input.focus()
 function factorial(num)
 {
     if(num==0)
@@ -91,7 +93,7 @@ function reply_click(clicked_id)
     {
         position=input.value.length;
     }
-    if(clicked_id=="(" && !(get_string("algebric").includes(input.value[input.value.length-1])) && input.value.length!=0)
+    if(clicked_id=="(" && !(['+','-','×','÷'].includes(input.value[input.value.length-1])) && input.value.length!=0)
     {
         var previous_input=check_input(clicked_id,input.value)
         input.value=previous_input.slice(0,position)+"×"+clicked_id+previous_input.slice(position)
