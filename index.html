@@ -14,9 +14,11 @@
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
-        
-
+        <script src="button_response.js"></script>
         <script src="calculator.js"></script>
+        <script src="factorial.js"></script>
+        <script src="error.js"></script>
+        <script src="precedence.js"></script>
         <script src="jquerry.js"></script>
 
     </head>
@@ -82,45 +84,4 @@
             
         </div>
     </body>
-    <script>
-        $(document).ready(function(){
-            var input=document.getElementById("textinput")
-            input.focus()
-        $(document).keydown(function(e){
-            if(e.which==13)
-            {
-                solve_expression();
-                $(".historybox").hide()
-            }
-
-        })
-        $(".inp, .exp").click(function(){
-            reply_click(this.value);
-            $(".historybox").hide()
-        });
-        $(".ac").click(function(){
-            clear_input();
-            $(".historybox").hide()
-
-        });
-        $(".ce").click(function(){
-            remove_input();
-            $(".historybox").hide()
-
-        });
-        $(".equal").click(function(){
-            solve_expression();
-            $(".historybox").hide()
-
-        });
-        $(".leftclock").click(function(){
-            $(".historybox").animate({
-            height: 'toggle'
-            });
-        });
-        $(".keybord, .input, .ans").click(function(){
-            $(".historybox").hide()
-            });
-        });
-    </script>
 </html>

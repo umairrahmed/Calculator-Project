@@ -2,20 +2,7 @@ let operator=[]
 let operation=[]
 let ans=0;
 let history=[]
-var input=document.getElementById("textinput")
-input.focus()
-function factorial(num)
-{
-    if(num==0)
-    {
-        return 0
-    }
-    else if(num==1)
-    {
-        return 1
-    }
-    return num*factorial(num-1)
-}
+
 function get_string(what){
     if(what=="trignometry")
     {
@@ -34,169 +21,31 @@ function get_string(what){
         return ['×','÷']
     }
 }
-function do_red(){
-    let input=document.getElementById("textinput")
-    input.style.color='red'
-}
-function check_input(clicked_id,inputvalue)
-{
+function check_input(clicked_id,input_value){
     const add=get_string("add");
     const multiply=get_string("multiply");
-    if(!(multiply.includes(inputvalue.slice(inputvalue.length-1,inputvalue.length)) && multiply.includes(clicked_id)))
+    if((multiply.includes(input_value.slice(input_value.length-1,input_value.length)) && multiply.includes(clicked_id)))
     {
-        if(!(add.includes(inputvalue.slice(inputvalue.length-1,inputvalue.length)) && add.includes(clicked_id)))
-        {
-            if(!(inputvalue.slice(inputvalue.length-1,inputvalue.length)=="." && clicked_id=="."))
-            {
-                if(!(multiply.includes(inputvalue.slice(inputvalue.length-1,inputvalue.length)) && clicked_id=="+"))
-                {
-                    if(!(add.includes(inputvalue.slice(inputvalue.length-1,inputvalue.length)) && multiply.includes(clicked_id)))
-                    {
-                        return inputvalue
-                    }
-                    else{
-                        return inputvalue.slice(0,inputvalue.length-1)
-                    }
-                }
-                else{
-                    return inputvalue.slice(0,inputvalue.length-1)
-                }
-            }
-            else{
-                return inputvalue.slice(0,inputvalue.length-1)
-            }
-        }
-        else{
-            return inputvalue.slice(0,inputvalue.length-1)
-        }
-    }
-    else{
-        return inputvalue.slice(0,inputvalue.length-1)
+        return input_value.slice(0,input_value.length-1)
 
     }
-}
-function reply_click(clicked_id)
-{
-    let textexp=document.getElementById("textexp")
-    textexp.placeholder="Ans="+ans
-    const trignometry=get_string("trignometry");
-    var input=document.getElementById("textinput")
-
-    input.style.color='black'
-    
-    if(get_string("algebric").includes(clicked_id) && input.value==ans && input.value.length!=0)
+    if((add.includes(input_value.slice(input_value.length-1,input_value.length)) && add.includes(clicked_id)))
     {
-        input.value="Ans"
+        return input_value.slice(0,input_value.length-1)
     }
-    var position=input.selectionStart;
-    if(position==0)
+    if((input_value.slice(input_value.length-1,input_value.length)=="." && clicked_id=="."))
     {
-        position=input.value.length;
+        return input_value.slice(0,input_value.length-1)
     }
-    if(clicked_id=="(" && !(['+','-','×','÷'].includes(input.value[input.value.length-1])) && input.value.length!=0)
+    if((multiply.includes(input_value.slice(input_value.length-1,input_value.length)) && clicked_id=="+"))
     {
-        var previous_input=check_input(clicked_id,input.value)
-        input.value=previous_input.slice(0,position)+"×"+clicked_id+previous_input.slice(position)
-    } 
-    else if(trignometry.includes(clicked_id))
+        return input_value.slice(0,input_value.length-1)
+    }
+    if((add.includes(input_value.slice(input_value.length-1,input_value.length)) && multiply.includes(clicked_id)))
     {
-        // input.value=check_input(clicked_id,input.value)+clicked_id+"("
-        var previous_input=check_input(clicked_id,input.value)
-        input.value=previous_input.slice(0,position)+clicked_id+"("+previous_input.slice(position)
+        return input_value.slice(0,input_value.length-1)
     }
-    else{
-        if(!(check_input(clicked_id,input.value).length==0 && ['+','÷','×'].includes(clicked_id)))
-        {
-            var previous_input=check_input(clicked_id,input.value)
-            input.value=previous_input.slice(0,position)+clicked_id+previous_input.slice(position)
-            // input.value=check_input(clicked_id,input.value)+clicked_id
-        }
-        else{
-            input.value=""
-        }
-
-    }
-    input.focus();
-}
-function remove_input(){
-    let textexp=document.getElementById("textexp")
-    textexp.placeholder="Ans="+ans
-    let input=document.getElementById("textinput")
-    input.style.color='black'
-    var inputstr=input.value;
-    var position=input.selectionStart;
-    if(position==0)
-    {
-        position=inputstr.length;
-    }
-    if(inputstr.slice(position-1,position)=="(" && get_string("trignometry").includes(inputstr.slice(position-4,position-1)))
-    {
-        input.value=inputstr.slice(0,position-4)+inputstr.slice(position,inputstr.length);
-
-    }
-    else if(input.value=="Infinity" || input.value=="NaN" || input.value=="Ans")
-    {
-        input.value=""
-    }
-    else if(inputstr.slice(position-3,position)=="Ans")
-    {
-        input.value=inputstr.slice(0,position-3)+inputstr.slice(position,inputstr.length);
-    }
-    else
-    {
-
-        input.value=inputstr.slice(0,position-1)+inputstr.slice(position,inputstr.length);
-    }
-}
-function clear_input()
-{
-    let input=document.getElementById("textinput")
-    let textexp=document.getElementById("textexp")
-    input.value="";
-    input.placeholder=0;
-    textexp.placeholder="Ans="+ans
-    input.focus()
-}
-function evaluateinput(input){
-    let stack=new Array()
-    for(const element of input) {
-        if(element=="("){
-            stack.push(element)
-        }
-        else if(element==")" && stack.length!=0)
-        {
-            stack.pop()
-        }
-    };
-    if(stack.length==0)
-    {
-        return true
-    }
-    else{
-        return false
-    }
-}
-function precedence(symbol){
-    switch(symbol){
-        case '+':
-        case '-':
-            return 1
-        case '×':
-        case '÷':
-            return 2
-        case '^':
-            return 3
-        case 'sin':
-        case 'cos':
-        case 'tan':
-            return 4
-        case '√':
-            return 5
-        case '!':
-        case '%':
-            return 6
-    }
-    return 6
+    return input_value
 }
 function split_input(input){
     let arr=[]
@@ -210,10 +59,6 @@ function split_input(input){
         {
             element="÷"
         }
-        // else if(element=="e")
-        // {
-        //     element="2.7182"
-        // }
         else if(element=="π")
         {
             element="3.1415"
@@ -332,13 +177,9 @@ function performcalculation(){
             case '÷':
                 operator.push( b/a)
                 break;
-
-
-
         }
     }
 }
-
 function sart_solving(data)
 {
     operation=[]
@@ -386,7 +227,7 @@ function sart_solving(data)
 function solve_expression()
 {
     let input=document.getElementById("textinput")
-    let textexp=document.getElementById("textexp")
+    let text_exp=document.getElementById("textexp")
     if(input.value=="")
     {
         return 0
@@ -403,12 +244,12 @@ function solve_expression()
         {
             if(result=="Infinity"  )
             {
-                textexp.placeholder=input.value+"="
+                text_exp.placeholder=input.value+"="
                 input.value=result
             }
             else if(isNaN(result))
             {
-                textexp.placeholder=input.value+"="
+                text_exp.placeholder=input.value+"="
                 input.value=""
                 input.placeholder="Error"
             }
@@ -420,14 +261,14 @@ function solve_expression()
                     $(".historyblock").prepend(v)
 
                 })
-                textexp.placeholder=input.value+"="
+                text_exp.placeholder=input.value+"="
                 input.value=result;
                 ans=result;
                 input.focus()
             }
         }
         else{
-            textexp.placeholder=input.value+"="
+            text_exp.placeholder=input.value+"="
             input.value=""
             input.placeholder="Error"
         }
@@ -438,10 +279,7 @@ function solve_expression()
     }
 
 }
-function del(node)
-{  
-    node.remove()
-}
+
 
 
 
