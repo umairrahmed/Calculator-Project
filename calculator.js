@@ -1,7 +1,7 @@
 let operator=[]
 let operation=[]
 let ans=0;
-let history=[]
+let division_by_zero=false
 
 function get_string(what){
     if(what=="trignometry")
@@ -74,9 +74,14 @@ function split_input(input){
                 cont+=element
             }
             else if(cont!=""){
+                var index=variables.map(e=>e[0]).indexOf(cont)
                 if(cont=="Ans")
                 {
                     arr.push(ans)
+                }
+                else if(index>-1)
+                {
+                    arr.push(variables[index][1])
                 }
                 else if(cont=="e")
                 {
@@ -100,9 +105,14 @@ function split_input(input){
     }
     if(cont!="")
     {
+        var index=variables.map(e=>e[0]).indexOf(cont)
         if(cont=="Ans")
         {
             arr.push(ans)
+        }
+        else if(index>-1)
+        {
+            arr.push(variables[index][1])
         }
         else if(cont=="e")
         {
@@ -175,6 +185,7 @@ function performcalculation(){
                 operator.push(Math.pow(b,a))
                 break;
             case '÷':
+                a==0?division_by_zero=true:
                 operator.push( b/a)
                 break;
         }
@@ -242,7 +253,7 @@ function solve_expression()
         let result=sart_solving(split_data)
         if(operation.length==0 && operator.length==1)
         {
-            if(result=="Infinity"  )
+            if(result=="Infinity" && division_by_zero )
             {
                 text_exp.placeholder=input.value+"="
                 input.value=result
@@ -251,7 +262,8 @@ function solve_expression()
             {
                 text_exp.placeholder=input.value+"="
                 input.value=""
-                input.placeholder="Error"
+                input.placeholder="Syntax Error"
+                input.focus()
             }
             else{
                 result=parseFloat(result.toFixed(4));
@@ -270,7 +282,8 @@ function solve_expression()
         else{
             text_exp.placeholder=input.value+"="
             input.value=""
-            input.placeholder="Error"
+            input.placeholder="Division by zero is impossible"
+            input.focus()
         }
 
     }

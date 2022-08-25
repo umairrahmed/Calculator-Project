@@ -1,5 +1,5 @@
 
-function factorial(num)
+export const factorial=(num)=>
 {
     if(num==0)
     {

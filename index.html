@@ -5,6 +5,8 @@
         <meta charset="UTF-8">
         <meta name="Author" content="Umair Ahmed">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="calculator.js"></script>
+
 
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
@@ -15,11 +17,13 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
         <script src="button_response.js"></script>
-        <script src="calculator.js"></script>
-        <script src="factorial.js"></script>
         <script src="error.js"></script>
-        <script src="precedence.js"></script>
         <script src="jquerry.js"></script>
+        <script src="variable.js"></script>
+        <script src="precedence.js"></script>
+
+
+
 
     </head>
     <body">
@@ -29,11 +33,20 @@
                     <div class="display" >
                         <div class="history "  >
                             <i  class="fa-solid fa-clock-rotate-left leftclock" ></i>
+                            <i class="fa-solid fa-floppy-disk save"></i>
                             <input id="textexp" class="ans" type="text" placeholder="Ans=0" disabled>  
                             <div class="historybox">
                                 <h1>History</h1>
                                 <div class="historyblock" >
 
+                                </div>
+                            </div>
+                            <div class="variablebox">
+                                <div style="margin-top:20px ;">
+                                    <h class="vartext">Variables</h>
+                                    <i class="fa-solid fa-circle-plus add"></i>
+                                </div>
+                                <div class="variableblock" >
                                 </div>
                             </div>                  
                         </div>

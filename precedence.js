@@ -1,4 +1,4 @@
-function precedence(symbol){
+ function precedence(symbol){
     switch(symbol){
         case '+':
         case '-':
